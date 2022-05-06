@@ -13,9 +13,18 @@ import Register from './components/pages/Register'
 import { useEffect, useState } from 'react'
 import jwt_decode from 'jwt-decode';
 
+
 function App() {
   //state w/user data when user is logged in
   const [currentUser, setCurrentUser] = useState(null)
+  //socket things:
+  const { io } = require('socket.io-client')
+  const socket = io()
+
+  socket.on('connection',(socket)=>{
+    console.log(socket.id)
+  })
+
   //useEffect that handles localstorage if user navigates away from page/refreshes
   useEffect(()=>{
     const token = localStorage.getItem('jwt')
@@ -28,9 +37,7 @@ function App() {
 
   //logout handler function that deletes a token from localstorage
   const handleLogout = () => {
-    // remove the token from local storage
     if(localStorage.getItem('jwt')) localStorage.removeItem('jwt')
-    // set user state to be null
     setCurrentUser(null)
   }
 
@@ -55,17 +62,10 @@ function App() {
               setCurrentUser={setCurrentUser}
             />}
           />
-          {/* conditionally render the profile page depending on if user is logged in or not */}
           <Route 
             path='/profile'
             element={currentUser ? <Profile currentUser={currentUser}/> : <Navigate to='/login'/>}
           />
-
-          {/* <Route 
-            path='/profile'
-            element={<Profile />}
-          /> */}
-
           <Route 
             path='/register'
             element={<Register 

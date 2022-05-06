@@ -66,7 +66,7 @@ router.post('/login',async (req,res)=>{
 // GET /users/auth-locked -- example of checking a jwt and not serving data unless jwt is valid
 router.get('/auth-locked', requiresToken, (req,res)=>{
     //here we have access to the user on the res.locals
-    console.log(`logged in user: ${res.locals.user}`)
+    // console.log(`logged in user: ${res.locals.user}`)
     res.json({msg: `welcome to the auth locked route - you made it`})
 })
 

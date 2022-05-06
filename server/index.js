@@ -1,9 +1,15 @@
 require('./models')
 require('dotenv').config()
+//express things
 const express = require('express')
+const { createServer } = require('http')
+const { Server } = require('socket.io')
+
 const app = express()
 const cors = require('cors')
 const PORT = process.env.PORT || 3001
+const httpServer = createServer(app)
+const io = new Server(httpServer, { /*options*/ })
 
 
 //middleware
@@ -11,9 +17,12 @@ app.use(cors())
 app.use(express.json())
 
 const myMiddleWare = (req,res,next) => {
-    console.log(`hello from inside a middleware`)
     next()
 }
+
+io.on('connection', (socket) => {
+    console.log(`connection from ${socket}`)
+})
 
 app.use(myMiddleWare)
 app.use('/api-v1/users',require('./controllers/api-v1/users'))
@@ -22,6 +31,7 @@ app.get('/',(req,res)=>{
     res.json({msg: `welcome, hooked up!`})
 })
 
-app.listen(PORT,()=>{
-    console.log(`vibing on port ${PORT}`)
-})
+// app.listen(PORT,()=>{
+//     console.log(`vibing on port ${PORT}`)
+// })
+httpServer.listen(PORT)
