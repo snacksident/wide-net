@@ -79,7 +79,9 @@ function App() {
           />
           <Route
             path="/bugs"
-            element={<Bugs />}
+            element={<Bugs 
+              currentUser={currentUser}
+            />}
           />
         </Routes>
       </div>

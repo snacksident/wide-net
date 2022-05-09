@@ -3,10 +3,14 @@ const router = express.Router()
 const db = require('../../models')
 const requiresToken = require(`../requiresToken`)
 
-router.get('/',(req,res)=>{
-    res.json({msg: "yo"})
+
+// GET /bugs - get list of bugs
+router.get('/',async (req,res)=>{
+    const bugList = await db.Bug.findAll()
+    res.json(bugList)
 })
 
+// POST /bugs/new-bug - add new bug to db
 router.post('/new-bug',async (req,res)=>{
     const newBug = await db.Bug.create({
         // user: currentUser,
