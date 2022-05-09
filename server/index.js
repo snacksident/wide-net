@@ -31,6 +31,7 @@ io.on('connection', (socket) => {
 
 app.use(myMiddleWare)
 app.use('/api-v1/users',require('./controllers/api-v1/users'))
+app.use('/api-v1/bugs',require('./controllers/api-v1/bugs'))
 
 app.get('/',(req,res)=>{
     res.json({msg: `welcome, hooked up!`})

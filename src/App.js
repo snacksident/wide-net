@@ -10,6 +10,7 @@ import Login from './components/pages/Login'
 import Profile from './components/pages/Profile'
 import Welcome from './components/pages/Welcome'
 import Register from './components/pages/Register'
+import Bugs from './components/pages/Bugs'
 import { useEffect, useState } from 'react'
 import jwt_decode from 'jwt-decode';
 import { io } from "socket.io-client"
@@ -75,6 +76,10 @@ function App() {
               currentUser={currentUser} 
               setCurrentUser={setCurrentUser}
               />}
+          />
+          <Route
+            path="/bugs"
+            element={<Bugs />}
           />
         </Routes>
       </div>
