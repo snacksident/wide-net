@@ -14,3 +14,4 @@ db.on('error',(error)=>{
 })
 
 module.exports.User = require('./user')
+module.exports.Bug = require('./bug')

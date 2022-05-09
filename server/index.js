@@ -9,7 +9,12 @@ const app = express()
 const cors = require('cors')
 const PORT = process.env.PORT || 3001
 const httpServer = createServer(app)
-const io = new Server(httpServer, { /*options*/ })
+const io = new Server(httpServer, { 
+    cors: {
+        origin: '*',
+        methods: ['GET','POST']
+    }
+ })
 
 
 //middleware
@@ -21,7 +26,7 @@ const myMiddleWare = (req,res,next) => {
 }
 
 io.on('connection', (socket) => {
-    console.log(`connection from ${socket}`)
+    console.log(socket.id)
 })
 
 app.use(myMiddleWare)

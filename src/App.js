@@ -12,17 +12,20 @@ import Welcome from './components/pages/Welcome'
 import Register from './components/pages/Register'
 import { useEffect, useState } from 'react'
 import jwt_decode from 'jwt-decode';
+import { io } from "socket.io-client"
 
 
 function App() {
   //state w/user data when user is logged in
   const [currentUser, setCurrentUser] = useState(null)
   //socket things:
-  const { io } = require('socket.io-client')
   const socket = io()
 
-  socket.on('connection',(socket)=>{
+  socket.on('connect',()=>{
     console.log(socket.id)
+  })
+  socket.on('disconnect',()=>{
+    console.log(socket.disconnected)
   })
 
   //useEffect that handles localstorage if user navigates away from page/refreshes
