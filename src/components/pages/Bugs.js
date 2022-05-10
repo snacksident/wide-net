@@ -18,10 +18,6 @@ export default function Bugs({currentUser}) {
         getBugs()
     },[])
 
-    const handleClick = () => {
-        setShowForm(!showForm)
-    }
-
     const allBugs = bugs.map((bug,i)=>{
         return(
             <BugDisplay 
@@ -32,6 +28,7 @@ export default function Bugs({currentUser}) {
                 submittedOn={bug.date}
                 priority={bug.priority}
                 status={bug.status}
+                id={bug._id}
             />
         )
     })
@@ -47,9 +44,6 @@ export default function Bugs({currentUser}) {
             {showForm
                 && <BugForm currentUser={currentUser}/>
             }
-            {/* <BugForm 
-                currentUser={currentUser}
-            /> */}
         </>
     )
 }

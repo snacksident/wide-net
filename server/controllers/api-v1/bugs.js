@@ -21,4 +21,12 @@ router.post('/new-bug',async (req,res)=>{
     })
 })
 
+//PUT /bugs/update - updates bug info (status/comments/priority)
+router.put('/update',async(req,res)=>{
+    //find bug by id when clicked to update
+    const bugToUpdate = await db.Bug.findById()
+    //update info from form
+    //respond with updated bug info
+})
+
 module.exports = router

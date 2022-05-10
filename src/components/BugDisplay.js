@@ -1,4 +1,4 @@
-export default function BugDisplay({name, description, location, submittedOn, priority, status}) {
+export default function BugDisplay({name, description, location, submittedOn, priority, status, id}) {
     return(
         <div className="bug-details">
             <h1>{name}</h1>
@@ -7,6 +7,7 @@ export default function BugDisplay({name, description, location, submittedOn, pr
             <p>submitted on: {submittedOn}</p>
             <p>priority: {priority}</p>
             <p>status: {status}</p>
+            <p>id: {id}</p>
         </div>
     )
 }

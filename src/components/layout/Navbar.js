@@ -18,7 +18,7 @@ export default function Navbar ({handleLogout, currentUser}) {
     const loggedOut = (
         <>
             < Link to='/register'>register</Link>
-                <Link to='/login'>login</Link>
+            <Link to='/login'>login</Link>
         </>
     )
     return(
