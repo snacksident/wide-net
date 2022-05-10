@@ -4,7 +4,9 @@ import BugDisplay from '../BugDisplay'
 import BugForm from '../BugForm'
 
 export default function Bugs({currentUser}) {
+    //state vars
     const [bugs, setBugs] = useState([])
+    const [showForm, setShowForm] = useState(false)
     //get all current bugs, create BugDisplay components with current list
     useEffect(()=>{
         console.log('loaded')
@@ -15,6 +17,10 @@ export default function Bugs({currentUser}) {
         }
         getBugs()
     },[])
+
+    const handleClick = () => {
+        setShowForm(!showForm)
+    }
 
     const allBugs = bugs.map((bug,i)=>{
         return(
@@ -37,9 +43,13 @@ export default function Bugs({currentUser}) {
                 <p>current bugs:</p>
                 {allBugs}
             </div>
-            <BugForm 
+            <button onClick={()=>setShowForm(!showForm)}>add new bug</button>
+            {showForm
+                && <BugForm currentUser={currentUser}/>
+            }
+            {/* <BugForm 
                 currentUser={currentUser}
-            />
+            /> */}
         </>
     )
 }

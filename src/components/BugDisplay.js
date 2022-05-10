@@ -3,10 +3,10 @@ export default function BugDisplay({name, description, location, submittedOn, pr
         <div className="bug-details">
             <h1>{name}</h1>
             <h2>{description}</h2>
-            {location}
-            {submittedOn}
-            {priority}
-            {status}
+            <p>location: {location}</p>
+            <p>submitted on: {submittedOn}</p>
+            <p>priority: {priority}</p>
+            <p>status: {status}</p>
         </div>
     )
 }
