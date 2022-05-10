@@ -9,10 +9,8 @@ export default function Bugs({currentUser}) {
     const [showForm, setShowForm] = useState(false)
     //get all current bugs, create BugDisplay components with current list
     useEffect(()=>{
-        console.log('loaded')
         const getBugs = async () =>{
             let theBugs = await axios.get(`${process.env.REACT_APP_SERVER_URL}api-v1/bugs`)
-            console.log(theBugs)
             setBugs(theBugs.data)
         }
         getBugs()
