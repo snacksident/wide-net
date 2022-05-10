@@ -6,7 +6,7 @@ const requiresToken = require(`../requiresToken`)
 
 // GET /bugs - get list of bugs
 router.get('/',async (req,res)=>{
-    const bugList = await db.Bug.findAll()
+    const bugList = await db.Bug.find()
     res.json(bugList)
 })
 

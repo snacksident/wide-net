@@ -11,6 +11,7 @@ export default function Navbar ({handleLogout, currentUser}) {
                 </Link>
 
                 <Link to="/profile">profile</Link>
+                <Link to="/bugs">bugs</Link>
         </>
     )
     //if user is logged out

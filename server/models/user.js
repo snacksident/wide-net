@@ -21,6 +21,10 @@ const UserSchema = mongoose.Schema({
     admin: {
         type: Boolean,
         default: false
+    },
+    team: {
+        type: String,
+        default: null
     }
 })
 
