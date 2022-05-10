@@ -8,3 +8,11 @@ Nets are generally used to catch and filter things: grabbing unwanted objects ou
 * As a manager, I want to be notified of new bugs being submitted
 * As a manager, I want to assign bugfixes to developers
 
+# RESTful routing chart
+| Method | Route       | Purpose                                              |
+|--------|-------------|------------------------------------------------------|
+| GET    | /teams      | if logged in, shows teams that the user is a part of |
+| POST   | /teams      | creates a new team                                   |
+| GET    | /bugs/:team | retrieves bugs for specific team                     |
+| POST   | /bugs       | creates new 'bug' ticket                             |
+| PUT    | /bugs       | updates bug info (user assignment, notes, status)    |
