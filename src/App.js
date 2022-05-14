@@ -11,23 +11,13 @@ import Profile from './components/pages/Profile'
 import Welcome from './components/pages/Welcome'
 import Register from './components/pages/Register'
 import Bugs from './components/pages/Bugs'
-import { useEffect, useState } from 'react'
-import jwt_decode from 'jwt-decode';
-import { io } from "socket.io-client"
+import { useEffect, useState, useContext } from 'react'
+import jwt_decode from 'jwt-decode'
 
 
 function App() {
   //state w/user data when user is logged in
   const [currentUser, setCurrentUser] = useState(null)
-  //socket things:
-  const socket = io()
-
-  socket.on('connect',()=>{
-    console.log(socket.id)
-  })
-  socket.on('disconnect',()=>{
-    console.log(socket.disconnected)
-  })
 
   //useEffect that handles localstorage if user navigates away from page/refreshes
   useEffect(()=>{
@@ -53,6 +43,7 @@ function App() {
         currentUser={currentUser}
       />
       <div className="app">
+        
         <Routes>
           <Route 
             path="/"
@@ -77,15 +68,15 @@ function App() {
               setCurrentUser={setCurrentUser}
               />}
           />
-          <Route
-            path="/bugs"
-            element={<Bugs 
-              currentUser={currentUser}
-            />}
-          />
+            <Route
+              path="/bugs"
+              element={<Bugs 
+                currentUser={currentUser}
+              />}
+            />
         </Routes>
+        
       </div>
-
     </Router>
     
   )

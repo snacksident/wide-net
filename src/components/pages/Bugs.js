@@ -40,7 +40,7 @@ export default function Bugs({currentUser}) {
             </div>
             <button onClick={()=>setShowForm(!showForm)}>add new bug</button>
             {showForm
-                && <BugForm currentUser={currentUser}/>
+                && <BugForm currentUser={currentUser} />
             }
         </>
     )
