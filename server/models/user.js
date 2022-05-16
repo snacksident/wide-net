@@ -25,6 +25,11 @@ const UserSchema = mongoose.Schema({
     team: {
         type: String,
         default: null
+    },
+    bugs: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'bugs',
+        required: false
     }
 })
 
