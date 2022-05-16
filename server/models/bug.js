@@ -28,7 +28,15 @@ const BugSchema = mongoose.Schema({
     status: {
         type: String,
         default: 'Open'
+    },
+    notes: {
+        type: String,
+        require: false
+    },
+    assignedTo: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'users',
     }
-})
+},{timestamps: true})
 
 module.exports = mongoose.model('Bug',BugSchema)
